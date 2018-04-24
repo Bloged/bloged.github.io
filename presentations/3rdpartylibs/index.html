@@ -1,0 +1,474 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Third Party Libraries: The Dark Side</title>
+
+	<link rel="stylesheet" href="../../css/reveal.css">
+	<link rel="stylesheet" href="../../css/theme/first8.css">
+	<link rel="stylesheet" href="../../css/theme/newspaper.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../lib/css/zenburn.css">
+
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	<style>
+		.reveal section img {
+			border: 0px;
+			box-shadow: 0 0 0px;
+		}
+	</style>
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section>
+				<img class="plain" src="./images/teqnation.png" />
+			</section>
+
+			<section class="title">
+				<h1>Third Party Libraries</h1>
+				<h2>The Dark side</h2>
+				<p>Slides: https://first8.nl</p>
+			</section>
+
+			<section>
+				<section class="introduction">
+					<div>
+						<div class="text">
+							<h1>Hello!</h1>
+							apples
+							<h2>I am Arjan Gelderblom</h2>
+							<p>You can find me at
+								<div class="twitter">@ragelderblom</div>
+								<div>a.gelderblom@first8.nl</div>
+							</p>
+						</div>
+						<div class="image">
+							<img src="./images/profile.jpg" />
+						</div>
+					</div>
+				</section>
+
+				<section class="big-image" data-background="./images/first8-lego.jpg">
+					<aside class="notes">
+            Founded 1999
+            Java consultancy
+            DevSecOps
+            Spring
+            Java EE
+            Kubernetes / OpenShift / Docker
+					</aside>
+				</section>
+
+				<section class="big-image" data-background="./images/joa-profile.jpg">
+					<aside class="notes">
+						Above all I'm a husband and proud father.
+					</aside>
+				</section>
+
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>Third Party Library Security</h1>
+					<h2>Introduction</h2>
+				</section>
+
+				<section class="newspaper">
+					<div class="head">
+						<div class="headerobjectswrapper">
+							<div class="weatherforcastbox">
+								<span style="font-style: italic;">Weatherforcast for the next 24 hours: Plenty of Sunshine</span><br>
+								<span>Wind: 7km/h SSE; Ther: 21°C; Hum: 82%</span>
+							</div>
+							<header>TEQNation</header>
+						</div>
+						<div class="subhead">Utrecht - Wednesday April 25, 2018</div>
+					</div>
+
+					<div class="content">
+						<div class="collumns">
+
+							<div class="collumn">
+								<div class="head"><span class="headline hl3">Equifax Says Cyberattack May Have Affected 143 Million in the U.S.</span>
+									<p><span class="headline hl4">by NEW YORK TIMES</span></p>
+								</div>
+								Equifax, one of the three major consumer credit reporting agencies, said on Thursday that hackers had gained access to company data that potentially compromised sensitive information
+								for 143 million American consumers, including Social Security numbers and driver’s license numbers.
+								<p>The attack on the company represents one of the largest risks to personally sensitive information in recent years, and is the third major cybersecurity threat for the agency since 2015.</p>
+								<p>Equifax, based in Atlanta, is a particularly tempting target for hackers. If identity thieves wanted to hit one place to grab all the data needed to do the most damage, they would go straight to one of the three major credit reporting agencies.</p>
+								<p><span class="citation">“This is about as bad as it gets,”</span>said Pamela Dixon, executive director of the World Privacy Forum, a nonprofit research group.
+									“If you have a credit report, chances are you may be in this breach. The chances are much better than 50 percent.</p>
+								<p>Criminals gained access to certain files in the company’s system from mid-May to July by exploiting a weak point in website software, according to an investigation by Equifax and security consultants. The company said that it discovered the
+									intrusion on July 29 and has since found no evidence of unauthorized activity on its main consumer or commercial credit reporting databases.</p>
+								<p>
+							</div>
+
+							<div class="collumn">
+								<div class="head"><span class="headline hl5">That Yahoo data breach actually hit three billion accounts</span>
+									<p><span class="headline hl6">by WIRED</span></p>
+								</div>
+								Yahoo originally claimed that one billion accounts were accessed by hackers. Now it's admitted it was actually three billion.
+								<p>Last year, Yahoo admitted it had been hacked three years previously, leaking account details of one billion of its three billion users, making it one of the biggest breaches of all time. Now, Yahoo has admitted that all
+									three billion accounts were actually accessed.</p>
+								<p>The revelation follows Yahoo's acquisition by Verizon, with an investigation by forensic security experts during the company's integration revealing that all Yahoo user accounts were affected by the hack.</p>
+
+							</div>
+
+							<div class="collumn">
+								<div class="head"><span class="headline hl1">Deloitte hit by cyber-attack revealing clients’ secret emails</span>
+									<p><span class="headline hl2">by THE GUARDIAN</span></p>
+								</div>
+								One of the world’s “big four” accountancy firms has been targeted by a sophisticated hack that compromised the confidential emails and plans of some of its blue-chip clients, the Guardian can reveal.
+								<p>Deloitte, which is registered in London and has its global headquarters in New York, was the victim of a cybersecurity attack that went unnoticed for months.</p>
+								<p>One of the largest private firms in the US, which reported a record $37bn (£27.3bn) revenue last year, Deloitte provides auditing, tax consultancy and high-end cybersecurity advice to some of the world’s biggest banks, multinational companies,
+									media enterprises, pharmaceutical firms and government agencies.</p>
+								<p>The Guardian understands Deloitte clients across all of these sectors had material in the company email system that was breached. The companies include household names as well as US government departments.</p>
+								<p>So far, six of Deloitte’s clients have been told their information was “impacted” by the hack. Deloitte’s internal review into the incident is ongoing. </p>
+								<p>The Guardian understands Deloitte discovered the hack in March this year, but it is believed the attackers may have had access to its systems since October or November 2016.</p>
+								<p>The hacker compromised the firm’s global email server through an “administrator’s account” that, in theory, gave them privileged, unrestricted “access to all areas”.</p>
+								<p>The account required only a single password and did not have “two-step“ verification, sources said.</p>
+
+							</div>
+
+							<div class="collumn">
+								<div class="head"><span class="headline hl3">Verizon data of 6 million users leaked online</span>
+									<p><span class="headline hl4">by CNNTECH</span></p>
+								</div>
+								Verizon confirmed on Wednesday the personal data of 6 million customers has leaked online.
+								<p>The security issue, uncovered by research from cybersecurity firm UpGuard, was caused by a misconfigured security setting on a cloud server due to "human error." </p>
+								<p>The error made customer phone numbers, names, and some PIN codes publicly available online. PIN codes are used to confirm the identity of people who call for customer service. </p>
+								<p>No loss or theft of customer information occurred, Verizon told CNN Tech. </p>
+								<p>UpGuard -- the same company that discovered leaked voter data in June -- initially said the error could impact up to 14 million accounts. </p>
+								<p>Chris Vickery, a researcher at UpGuard, discovered the Verizon data was exposed by NICE Systems, an Israel-based company Verizon was working with to facilitate customer service calls. The data was collected over the last six months. </p>
+								<p>Vickery alerted Verizon to the leak on June 13. The security hole was closed on June 22. </p>
+								<p>The incident stemmed from NICE security measures that were not set up properly. The company made a security setting public, instead of private, on an Amazon S3 storage server -- a common technology used by businesses to keep data in the cloud.
+									This means Verizon data stored in the cloud was temporarily visible to anyone who had the public link. </p>
+							</div>
+
+							<div class="collumn">
+								<div class="head"><span class="headline hl1">Popular video-encoding Mac app HandBrake compromised with malware</span>
+									<p><span class="headline hl4">by TECHRADAR</span></p>
+								</div>
+								The creators of media transcoding program HandBrake have issued a statement warning that certain downloads of the installer for the Mac version of the app may contain a Trojan virus.
+								<p>Downloading the app between May 2 (14:30 UTC) and May 6 (11:00 UTC) from the “download.handbrake.fr” mirror means you have a 50-percent chance of being infected with the Trojan. Automatically updated apps (using updater version 1.0 and above),
+									and files downloaded from the primary mirror are unaffected.</p>
+								<p>The attackers replaced the usual HandBrake installer file, titled ‘HandBrake-1.0.7.dmg’, with a version that also contained the Trojan virus, so checking if you have this file on your system and seeing when it was downloaded is the first step to
+									identifying the threat.</p>
+								<p>If you have downloaded the installer during the specified time window, you can check if you’ve inadvertently installed the malware by opening your Mac’s Activity Monitor application and seeing if you have a process called “Activity_agent”.
+									If so, you are infected.</p>
+								<p>
+							</div>
+						</div>
+					</div>
+
+					<aside class="notes">
+						As you can see we all need security. Otherwise somewhere on some level somethings goes wrong.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Spring Boot - Rest Service</h2>
+					<pre><code class="hljs" data-trim contenteditable style="max-height: 100%">
+package nl.first8.presentations.spring.helloworld;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+@EnableAutoConfiguration
+public class HelloController {
+
+    @RequestMapping("/")
+    @ResponseBody
+    public String index() {
+        return "Hello world!";
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(HelloController.class, args);
+    }
+}
+					</code></pre>
+					<h3>A whopping 22 lines of code</h3>
+
+					<aside class="notes">
+						But what about the code you do not write yourself? As you can see this application has 22 lines of code written to be
+						functional and working fine. It is a REST service that will respond with "Hello World" when called.
+
+						But what you can't see is that 875.000 lines of Java code (980.000 lines total) that are imported via third party libraries that you didn't write.
+						How secure are those?
+
+						But I'm using open source...
+					</aside>
+				</section>
+
+				<section class="quote">
+					<blockquote>Given enouqh eyeballs, all bugs are shallow.<div class="author">- Linus Torvalds</div></blockquote>
+
+					<aside class="notes">
+						The misconception about open source being more secure started with what's known as Linus Law - named in honor of Linus
+						Torvalds and formulated by Eric S. Raymond in his essay and book The Cathedral and the Bazaar - and Linus' famous quote.
+
+						Considering that a bug such as ShellShock (September 2014) existed in the OpenSSL library for more than 22 years, it is far
+						from relevant nowadays.
+					</aside>
+				</section>
+
+
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>Known Vulnerabilities</h1>
+					<h2>Introduction</h2>
+				</section>
+
+				<section>
+					<img src="images/krack-attack.jpg" />
+
+					<aside class="notes">
+						Anyone heard of this one? This is the KRACK attack published in 2017. This one got pretty heavy media coverage in 2017.
+						But in 2017 20.000 vulnerabilites where disclosed.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Common OSS vulnerabilities (2017)</h2>
+					<ul>
+						<li>CVE-2016-9879 : Spring Security Framework</li>
+						<li>CVE-2017-7525 : Jackson Databind</li>
+						<li>WS-2017-0195 : jQuery</li>
+						<li>CVE-2017-5637 : Zookeeper Apache</li>
+						<li>CVE-2017-12617 : Apache Tomcat</li>
+					</ul>
+
+					<aside class="notes">
+						So altough bugs like Heartbleed, Shellshock and the DROWN attack made headlines that were too big to ignore, most bugs in dependencies
+						often go unnoticed.
+
+						<ul>
+							<li>Allowed attackers to bypass an important security constraints</li>
+							<li>Deserialization flaw which could allow an unauthenticated user to perform code execution.</li>
+							<li>In < version 2.2.4 lowercasing logic on attribute names could lead to infinite recursion and potentially denial of service</li>
+							<li>Possible Denial of Service attack.</li>
+							<li>Allowing potiential remote execution attack.</li>
+						</ul>
+
+						These are just some of the more common ones found in 2017. So by far not a complete list.
+
+					</aside>
+				</section>
+
+				<section class="transition">
+					<h1>Known Vulnerabilities</h1>
+					<h2>Migitation</h2>
+				</section>
+
+				<section class="default">
+					<h2>OWASP Top 10</h2>
+					<h3>A9: Using components with Known Vulnerabilities</h3>
+
+					<aside class="notes">
+						OWASP recognized this problem and added "Using Components with Known Vulnerabilities" to the OWASP Top 10 back in 2013. It is still
+						so prevelant that it made the 2017 list again.
+
+						But not only OWASP recognized this problem; different open-source and commercial tools have emerged over the years to tackle this problem.
+					</aside>
+				</section>
+
+				<section>
+					<h1>Tools</h1>
+					<table>
+						<th>
+							<td><b>Open Source</b></td>
+							<td><b>Commercial</b></td>
+						</th>
+						<tr>
+							<td></td>
+							<td>Node Security Project</td>
+							<td>Hakiri</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>RetireJS</td>
+							<td>Snyk</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>OSSIndex</td>
+							<td>Gemnasium</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>Dependency-check</td>
+							<td>SRC:CLR</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>Bundler-audit</td>
+							<td></td>
+						</tr>
+					</table>
+
+					<aside class="notes">
+
+					</aside>
+				</section>
+
+				<section>
+					<h1>Example</h1>
+    			<iframe src="https://asciinema.org/a/uaRi8eep5sUBmzKcFa2Csyqxu/embed?cols=200&rows=30&speed=2&size=medium"
+              style="width: 1328px; height: 706px;"></iframe>
+				</section>
+
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>Cross Build Injection (XBI)</h1>
+					<h2>Introduction</h2>
+				</section>
+
+				<section>
+					<img src="images/mitm-nexus.jpg">
+				</section>
+
+				<section class="big-image" data-background="./images/https-url.jpg">
+				</section>
+
+				<section>
+					<img src="images/mitm-mvn-central.jpg">
+				</section>
+
+				<section>
+					<h1>Tools</h1>
+				</section>
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>Unknown Vulnerabilities</h1>
+					<h2>Introduction</h2>
+				</section>
+
+				<section>
+					<h1>bugs</h1>
+
+					<table>
+						<th>
+							<td>1k lines</td>
+						</th>
+						<tr>
+							<td>Industry standard</td>
+							<td class="fragment">15-50</td>
+						</tr>
+						<tr>
+							<td>Microsoft</td>
+							<td class="fragment">10-20</td>
+						</tr>
+						<tr>
+							<td>Harlan Mills</td>
+							<td class="fragment">3</td>
+						</tr>
+						<tr>
+							<td>NASA</td>
+							<td class="fragment">0</td>
+						</tr>
+					</table>
+				</section>
+
+				<section class="big-image" data-background="./images/code-review.jpg" data-background-size="contain"></section>
+
+				<section class="big-image" data-background="./images/cast-nets.jpeg"></section>
+
+				<section class="big-image" data-background="./images/apples.jpg"></section>
+
+			</section>
+
+			<section>
+				<section class="big-image" data-background="./images/post-apocalyptic.jpg">
+
+					<aside class="notes">
+						Open source software has flaws and will have flaws, as any other software product we know of today. Most open source projects have in general
+						good track records in addressing security issues quickly and professionally and providing fixed versions as soon as possible.
+
+						Open source is great for development and there's lots of benefit, but there's also risks that organizations need to be aware of.
+					</aside>
+				</section>
+			</section>
+
+			<section>
+				<img class="plain" src="./images/teqnation.png" />
+			</section>
+	</div>
+
+	<script src="../../lib/js/head.min.js"></script>
+	<script src="../../js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+
+			width: "100%",
+			height: "100%",
+			margin: 0,
+			minScale: 1,
+			maxScale: 1,
+
+			// your allotted time for presentation
+			allottedTime: 45 * 60 * 1000, // 40 minutes
+			progressBarHeight: 5,
+			timeProgressBarStyle: 'speaker',
+
+			dependencies: [{
+					src: '../../plugin/markdown/marked.js'
+				},
+				{
+					src: '../../plugin/markdown/markdown.js'
+				},
+				{
+					src: '../../plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: '../../plugin/highlight/highlight.js',
+					async: true,
+					callback: function() {
+						hljs.initHighlightingOnLoad();
+					}
+				},
+				{
+					src: '../../plugin/elapsed-time-bar/elapsed-time-bar.js'
+				},
+				{
+					src: '../../plugin/fullscreen/fullscreen.js'
+				},
+				{
+					src: '../../plugin/embed-tweet/embed-tweet.js'
+				}
+			]
+		});
+	</script>
+</body>
