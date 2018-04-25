@@ -44,7 +44,10 @@
 			<section class="title">
 				<h1>Third Party Libraries</h1>
 				<h2>The Dark side</h2>
-				<p>Slides: https://first8.nl</p>
+				<p>
+					Slides: https://first8.nl<br>
+					https://bit.ly/2KfFSX8
+				</p>
 			</section>
 
 			<section>
@@ -351,18 +354,72 @@ public class HelloController {
 
 				<section>
 					<img src="images/mitm-nexus.jpg">
+
+					<aside class="notes">
+						An example from the Java world, as that is my background...
+
+						How we are comprised isn't really part of this. But our Jenkins has been comprised and is communicating with the
+						attacker instead of the Nexus he is expecting. The attacker is now able to have our build use his compromised
+						dependencies, which could do all kinds of nasty things.
+
+						Depending on the level of knowledge he could further compromise the Jenkins machine by having a specific payload
+						sent to you. Or he could compromise your 'customers', by having a keylogger in the dependency that steals creditcard
+						information.
+					</aside>
 				</section>
 
 				<section class="big-image" data-background="./images/https-url.jpg">
+					<aside class="notes">
+						Treat your build environment as a production environment. That it's only running internally isn't a excuse
+						to not treat it like that. So have it only accessable by HTTPS and do all the other normal precautions you
+						have when it is production.
+					</aside>
 				</section>
 
 				<section>
 					<img src="images/mitm-mvn-central.jpg">
+
+					<aside class="notes">
+						But what if they, by DNS hijacking or anything else, compromised your path to Maven Central. Then all the previous mentioned risks
+						are back again. And there is nothing you can do on the infrastructure and/or server level to prevent this.
+
+						Another option is that a author decides to withdraw his packages from the central repository. This isn't just theoratical as it happened
+						to NodeJS. An author removed his 9 packages, and other people then reuploaded those packages and in least one case it did something completely
+						different as the original package.
+					</aside>
 				</section>
 
 				<section>
 					<h1>Tools</h1>
+					<ul>
+						<li>nuget</li>
+						<li>mvn pgpverify</li>
+						<li>mvn dependencies</li>
+						<li>pkgsign sign</li>
+					</ul>
+
+					<aside class="notes">
+						what we then need is a way to verify that the artifact sent to us is the one we expect it to be. Luckely for this also tools are available
+						to help us with this.
+
+						For .Net the NuGet cli has a verify option that we can give a known fingerprint to compare to the one of the downloaded dependency.
+
+						Maven supports the signing of packages which can then be verified by the pgpverify plugin. Only not all packages have this information in Maven Central
+						, even some big ones, therefor we can't really rely on this. Therefor we can use the mvn dependencies plugin that wil generate a list of checksums we can
+						then compare and fail the build if they differ.
+
+						PKGsign is the NodeJS version of this. But just as the pgpverify of maven it is the author who has to sign the package. Therefor this isn't watertight as
+						it might be possible that your are using a completely valid dependency that isn't signed by the author.
+
+					</aside>
 				</section>
+
+				<section>
+					<h1>Example</h1>
+    			<iframe src="https://asciinema.org/a/HNl6J8oRfsR0Js6fD6ZLY3qjd/embed?cols=200&rows=30&speed=1&size=medium"
+              style="width: 1328px; height: 706px;"></iframe>
+				</section>
+
 			</section>
 
 			<section>
@@ -384,24 +441,62 @@ public class HelloController {
 						</tr>
 						<tr>
 							<td>Microsoft</td>
-							<td class="fragment">10-20</td>
+							<td class="fragment">10-20 (0.5)</td>
 						</tr>
 						<tr>
 							<td>Harlan Mills</td>
-							<td class="fragment">3</td>
+							<td class="fragment">3 (0.1)</td>
 						</tr>
 						<tr>
 							<td>NASA</td>
 							<td class="fragment">0</td>
 						</tr>
 					</table>
+
+					<aside class="notes">
+							Steve McConnell mentioned in his book Code Complete the following numbers about bugs (not vulnerabilities) per 1000 LOC.
+
+							Industry Average: "about 15 - 50 errors per 1000 lines of delivered code." He further says this is usually representative
+							of code that has some level of structured programming behind it, but probably includes a mix of coding techniques.
+
+							Microsoft Applications: "about 10 - 20 defects per 1000 lines of code during in-house testing, and 0.5 defect per
+							KLOC (KLOC IS CALLED AS 1000 lines of code) in released product (Moore 1992)." He attributes this to a combination of code-reading
+							techniques and independent testing.
+
+							Harlan Mills pioneered 'cleanroom development', a technique that has been able to achieve rates as low as 3 defects per 1000 lines
+							of code during in-house testing and 0.1 defect per 1000 lines of code in released product
+
+							A few projects - for example, the space-shuttle software - have achieved a level of 0 defects in 500,000 lines of code using
+							a system of format development methods, peer reviews, and statistical testing."
+					</aside>
 				</section>
 
 				<section class="big-image" data-background="./images/code-review.jpg" data-background-size="contain"></section>
 
-				<section class="big-image" data-background="./images/cast-nets.jpeg"></section>
+				<section class="big-image" data-background="./images/cast-nets.jpeg">
+					<aside class="notes">
+						Normally we want to keep the scope of everything as small as possible, but when it comes to security we want to cast our nets wide.
 
-				<section class="big-image" data-background="./images/apples.jpg"></section>
+						If you have a library that is doing, let's say, sanitization of input for you; test it. Make sure it behaves as you expect it too,
+						for example you can fuzzy test your input...
+
+						And do not limit things like Penetration tests to your own code only, include as much as possible. If it is possible to break your application,
+						the hacker won't mind if it is in a library or in your own code.
+					</aside>
+				</section>
+
+				<section class="big-image" data-background="./images/apples.jpg">
+					<aside class="notes">
+						And ofcourse pick your dependencies carefully. Do you really need that fancy projecct as a dependency, or do you only need that
+						small library that does exactly what you want and nothing more.
+
+						Various  aspects  to  review:
+						- Past  security  public  reports
+						– Pentest  or  other  assessment  reports
+						– CVE  and  other  databases  with  reports  on library
+					 	– Security  email  list  activity  for  this  library
+					</aside>
+				</section>
 
 			</section>
 
