@@ -1,0 +1,835 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>DevSecOps: Five Common Mistakes</title>
+
+	<link rel="stylesheet" href="../../css/reveal.css">
+	<link rel="stylesheet" href="../../css/theme/first8.css">
+	<link rel="stylesheet" href="../../css/theme/newspaper.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../lib/css/zenburn.css">
+
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	<style>
+		.reveal section img {
+			border: 0px;
+			box-shadow: 0 0 0px;
+		}
+	</style>
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section>
+				<img class="plain" src="./images/codemotion.jpg" />
+			</section>
+
+			<section class="title">
+				<h1>DevSecOps: Five Common Mistakes</h1>
+			</section>
+
+			<section>
+				<section class="introduction">
+					<div>
+						<div class="text">
+							<h1>Hello!</h1>
+							<h2>I am Arjan Gelderblom</h2>
+							<p>You can find me at
+								<div class="twitter">@ragelderblom</div>
+								<div>a.gelderblom@first8.nl</div>
+							</p>
+						</div>
+						<div class="image">
+							<img src="./images/profile.jpg" />
+						</div>
+					</div>
+				</section>
+
+				<section class="big-image" data-background="./images/first8-lego.jpg">
+					<aside class="notes">
+						I work at First8, where we build cool stuff like Milenium Falcons from Lego, but that is outside of business hours.
+						Within those bysiness hours we are do Java consultancy.<br>
+            DevSecOps<br>
+            Spring<br>
+            Java EE<br>
+            Kubernetes / OpenShift / Docker<br>
+					</aside>
+				</section>
+
+				<section class="big-image" data-background="images/Joa-black-background.jpg" /></section>
+
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>DevSecOps</h1>
+					<h2>Why, oh why?</h2>
+				</section>
+
+				<section class="newspaper">
+					<div class="head">
+						<div class="headerobjectswrapper">
+							<div class="weatherforcastbox">
+								<span style="font-style: italic;">Weatherforcast for the next 24 hours: Plenty of Sunshine</span><br>
+								<span>Wind: 7km/h SSE; Ther: 21°C; Hum: 82%</span>
+							</div>
+							<header>CodeMotion Amsterdam</header>
+						</div>
+						<div class="subhead">Amsterdam - Thuesday May 8, 2018</div>
+					</div>
+
+					<div class="content">
+						<div class="collumns">
+
+							<div class="collumn">
+								<div class="head"><span class="headline hl3">Equifax Says Cyberattack May Have Affected 143 Million in the U.S.</span>
+									<p><span class="headline hl4">by NEW YORK TIMES</span></p>
+								</div>
+								Equifax, one of the three major consumer credit reporting agencies, said on Thursday that hackers had gained access to company data that potentially compromised sensitive information for 143 million American consumers, including Social Security numbers
+								and driver’s license numbers.
+								<p>The attack on the company represents one of the largest risks to personally sensitive information in recent years, and is the third major cybersecurity threat for the agency since 2015.</p>
+								<p>Equifax, based in Atlanta, is a particularly tempting target for hackers. If identity thieves wanted to hit one place to grab all the data needed to do the most damage, they would go straight to one of the three major credit reporting agencies.</p>
+								<p><span class="citation">“This is about as bad as it gets,”</span>said Pamela Dixon, executive director of the World Privacy Forum, a nonprofit research group. “If you have a credit report, chances are you may be in this breach. The chances are
+									much better than 50 percent.</p>
+								<p>Criminals gained access to certain files in the company’s system from mid-May to July by exploiting a weak point in website software, according to an investigation by Equifax and security consultants. The company said that it discovered the intrusion
+									on July 29 and has since found no evidence of unauthorized activity on its main consumer or commercial credit reporting databases.</p>
+								<p>
+							</div>
+
+							<div class="collumn">
+								<div class="head"><span class="headline hl5">That Yahoo data breach actually hit three billion accounts</span>
+									<p><span class="headline hl6">by WIRED</span></p>
+								</div>
+								Yahoo originally claimed that one billion accounts were accessed by hackers. Now it's admitted it was actually three billion.
+								<p>Last year, Yahoo admitted it had been hacked three years previously, leaking account details of one billion of its three billion users, making it one of the biggest breaches of all time. Now, Yahoo has admitted that all three billion accounts
+									were actually accessed.</p>
+								<p>The revelation follows Yahoo's acquisition by Verizon, with an investigation by forensic security experts during the company's integration revealing that all Yahoo user accounts were affected by the hack.</p>
+
+							</div>
+
+							<div class="collumn">
+								<div class="head"><span class="headline hl1">Deloitte hit by cyber-attack revealing clients’ secret emails</span>
+									<p><span class="headline hl2">by THE GUARDIAN</span></p>
+								</div>
+								One of the world’s “big four” accountancy firms has been targeted by a sophisticated hack that compromised the confidential emails and plans of some of its blue-chip clients, the Guardian can reveal.
+								<p>Deloitte, which is registered in London and has its global headquarters in New York, was the victim of a cybersecurity attack that went unnoticed for months.</p>
+								<p>One of the largest private firms in the US, which reported a record $37bn (£27.3bn) revenue last year, Deloitte provides auditing, tax consultancy and high-end cybersecurity advice to some of the world’s biggest banks, multinational companies,
+									media enterprises, pharmaceutical firms and government agencies.</p>
+								<p>The Guardian understands Deloitte clients across all of these sectors had material in the company email system that was breached. The companies include household names as well as US government departments.</p>
+								<p>So far, six of Deloitte’s clients have been told their information was “impacted” by the hack. Deloitte’s internal review into the incident is ongoing. </p>
+								<p>The Guardian understands Deloitte discovered the hack in March this year, but it is believed the attackers may have had access to its systems since October or November 2016.</p>
+								<p>The hacker compromised the firm’s global email server through an “administrator’s account” that, in theory, gave them privileged, unrestricted “access to all areas”.</p>
+								<p>The account required only a single password and did not have “two-step“ verification, sources said.</p>
+
+							</div>
+
+							<div class="collumn">
+								<div class="head"><span class="headline hl3">Verizon data of 6 million users leaked online</span>
+									<p><span class="headline hl4">by CNNTECH</span></p>
+								</div>
+								Verizon confirmed on Wednesday the personal data of 6 million customers has leaked online.
+								<p>The security issue, uncovered by research from cybersecurity firm UpGuard, was caused by a misconfigured security setting on a cloud server due to "human error." </p>
+								<p>The error made customer phone numbers, names, and some PIN codes publicly available online. PIN codes are used to confirm the identity of people who call for customer service. </p>
+								<p>No loss or theft of customer information occurred, Verizon told CNN Tech. </p>
+								<p>UpGuard -- the same company that discovered leaked voter data in June -- initially said the error could impact up to 14 million accounts. </p>
+								<p>Chris Vickery, a researcher at UpGuard, discovered the Verizon data was exposed by NICE Systems, an Israel-based company Verizon was working with to facilitate customer service calls. The data was collected over the last six months. </p>
+								<p>Vickery alerted Verizon to the leak on June 13. The security hole was closed on June 22. </p>
+								<p>The incident stemmed from NICE security measures that were not set up properly. The company made a security setting public, instead of private, on an Amazon S3 storage server -- a common technology used by businesses to keep data in the cloud.
+									This means Verizon data stored in the cloud was temporarily visible to anyone who had the public link. </p>
+							</div>				<section class="introduction">
+					<div>
+						<div class="text">
+							<h1>Hello!</h1>
+							<h2>I am Arjan Gelderblom</h2>
+							<p>You can find me at
+								<div class="twitter">@ragelderblom</div>
+							</p>
+						</div>
+						<div class="image">
+							<img src="./images/profile.jpg" />
+						</div>
+					</div>
+
+
+							<div class="collumn">
+								<div class="head"><span class="headline hl1">Popular video-encoding Mac app HandBrake compromised with malware</span>
+									<p><span class="headline hl4">by TECHRADAR</span></p>
+								</div>
+								The creators of media transcoding program HandBrake have issued a statement warning that certain downloads of the installer for the Mac version of the app may contain a Trojan virus.
+								<p>Downloading the app between May 2 (14:30 UTC) and May 6 (11:00 UTC) from the “download.handbrake.fr” mirror means you have a 50-percent chance of being infected with the Trojan. Automatically updated apps (using updater version 1.0 and above),
+									and files downloaded from the primary mirror are unaffected.</p>
+								<p>The attackers replaced the usual HandBrake installer file, titled ‘HandBrake-1.0.7.dmg’, with a version that also contained the Trojan virus, so checking if you have this file on your system and seeing when it was downloaded is the first step
+									to identifying the threat.</p>
+								<p>If you have downloaded the installer during the specified time window, you can check if you’ve inadvertently installed the malware by opening your Mac’s Activity Monitor application and seeing if you have a process called “Activity_agent”. If
+									so, you are infected.</p>
+								<p>
+							</div>
+						</div>
+					</div>
+					<aside class="notes">
+						As you can see we all need security. Otherwise somewhere on some level something goes wrong. And for these company it meant major headlines. But we don't hold any sensitive data about
+						our customers so we can't have any data leaks from that.
+
+						<br><br> As you can see Handbrake which is a video-encoding app for Mac got compromised and infected with malware. So altough they didn't steal data directly from that commpany they still
+						made handlines with a security incident.
+					</aside>
+				</section>
+
+				<section class="quote">
+					<blockquote>It takes many good deeds to build a good reputation, and one one bad one to lose it.
+						<div class="author">Benjamin Franklin</div>
+					</blockquote>
+
+					<aside class="notes">
+						But we do not have a product either so we are not vulnerable to that either. Ok... whatever it might be that you are doing then... you still got your reputation. Altough
+						phising just recently got passed by Cryptoware as most lucrative form of cybercrime it is still lucrative to have a reputable website serving your phising mails and other
+						nefarious content.
+					</aside>
+				</section>
+
+				<section class="transition">
+					<h1>DevSecOps</h1>
+					<h2>Why me?</h2>
+				</section>
+
+				<section class="big-image" data-background="images/tug-of-war.jpeg">
+					<aside class="notes">
+						The DevOps and cloud changes the whole paradigm how applications are developed and deployed as it’s all about agility, speed, automation, scale and they are not worried
+						about privileges as getting application to work is their main priority.
+						<br>IT Security has been almost on other extreme with manual processes, cautious approach, and least privileges being the highest priority as securing things is more
+						important than speed.
+					</aside>
+				</section>
+
+				<section class="big-image" data-background="images/computer-history.jpeg">
+					<aside class="notes">
+						So... a very short... and probably inclomplete bit of history of project management methodology...
+					</aside>
+				</section>
+
+				<section>
+					<h1>Waterfall</h1>
+					<div class="development-flow">
+						<div>
+							<div class="design" style="width: 250px;"></div>
+							<div class="code" style="width: 900px;"></div>
+							<div class="test" style="width: 150px;"></div>
+							<div class="deploy" style="width: 250px;"></div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h1>Agile</h1>
+					<div class="development-flow">
+						<div>
+							<div class="design" style="width: 250px;"></div>
+							<div class="code" style="width: 150px;"></div>
+							<div class="test" style="width: 150px;"></div>
+							<div class="design" style="width: 50px;"></div>
+							<div class="code" style="width: 150px;"></div>
+							<div class="test" style="width: 150px;"></div>
+							<div class="design" style="width: 50px;"></div>
+							<div class="code" style="width: 150px;"></div>
+							<div class="test" style="width: 150px;"></div>
+							<div class="design" style="width: 50px;"></div>
+							<div class="deploy" style="width: 250px;"></div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h1>DevOps</h1>
+					<div class="development-flow">
+						<div>
+							<div class="design" style="width: 250px;"></div>
+							<div class="code" style="width: 50px;"></div>
+							<div class="test" style="width: 50px;"></div>
+							<div class="deploy" style="width: 50px;"></div>
+							<div class="design" style="width: 50px;"></div>
+							<div class="code" style="width: 50px;"></div>
+							<div class="test" style="width: 50px;"></div>
+							<div class="deploy" style="width: 50px;"></div>
+							<div class="design" style="width: 50px;"></div>
+							<div class="code" style="width: 50px;"></div>
+							<div class="test" style="width: 50px;"></div>
+							<div class="deploy" style="width: 50px;"></div>
+							<div class="design" style="width: 50px;"></div>
+							<div class="deploy" style="width: 50px;"></div>
+							<div class="code" style="width: 50px;"></div>
+							<div class="test" style="width: 50px;"></div>
+							<div class="design" style="width: 50px;"></div>
+							<div class="deploy" style="width: 50px;"></div>
+							<div class="code" style="width: 50px;"></div>
+							<div class="test" style="width: 50px;"></div>
+							<div class="design" style="width: 50px;"></div>
+							<div class="deploy" style="width: 50px;"></div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h1>DevSecOps</h1>
+					<div class="development-flow">
+						<div>
+							<div class="sec-design" style="width: 250px;"></div>
+							<div class="sec-code" style="width: 50px;"></div>
+							<div class="sec-test" style="width: 50px;"></div>
+							<div class="sec-deploy" style="width: 50px;"></div>
+							<div class="sec-design" style="width: 50px;"></div>
+							<div class="sec-code" style="width: 50px;"></div>
+							<div class="sec-test" style="width: 50px;"></div>
+							<div class="sec-deploy" style="width: 50px;"></div>
+							<div class="sec-design" style="width: 50px;"></div>
+							<div class="sec-code" style="width: 50px;"></div>
+							<div class="sec-test" style="width: 50px;"></div>
+							<div class="sec-deploy" style="width: 50px;"></div>
+							<div class="sec-design" style="width: 50px;"></div>
+							<div class="sec-code" style="width: 50px;"></div>
+							<div class="sec-test" style="width: 50px;"></div>
+							<div class="sec-deploy" style="width: 50px;"></div>
+							<div class="sec-design" style="width: 50px;"></div>
+							<div class="sec-code" style="width: 50px;"></div>
+							<div class="sec-test" style="width: 50px;"></div>
+							<div class="sec-deploy" style="width: 50px;"></div>
+							<div class="sec-design" style="width: 50px;"></div>
+							<div class="sec-code" style="width: 50px;"></div>
+							<div class="sec-test" style="width: 50px;"></div>
+							<div class="sec-deploy" style="width: 50px;"></div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="tweet" data-src="https://twitter.com/ProdSec/status/943122600112291840"></div>
+				</section>
+
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>No Security at Design Level</h1>
+					<h2>Mistake no. 1</h2>
+				</section>
+
+				<section>
+					<canvas class="stretch" data-chart="bar">
+<!--
+{
+ "data": {
+  "labels": ["Design"," Build"," Integration"," Acceptance"," Production"],
+  "datasets":[
+   {
+    "data":[1,5,10,50,150],
+    "label":"Cost of Software Bug","backgroundColor":"rgba(20,220,220,.8)"
+   }
+  ]
+ },
+ "options": { "responsive": "true" }
+}
+-->
+					</canvas>
+				</section>
+
+				<section>
+					<canvas class="stretch" data-chart="bar">
+<!--
+{
+ "data": {
+  "labels": ["Design"," Build"," Integration"," Acceptance"," Production"," Breach"],
+  "datasets":[
+   {
+    "data":[1,5,10,50,150,1000],
+    "label":"Cost of Software Bug","backgroundColor":"rgba(20,220,220,.8)"
+   }
+  ]
+ },
+ "options": { "responsive": "true" }
+}
+-->
+					</canvas>
+				</section>
+
+				<section class="big-image" data-background="./images/SDLModel.svg" data-background-size="contain">
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section>
+					<h1>Threat modeling</h1>
+				</section>
+
+				<section>
+					<h1>Specify security acc crit.</h1>
+				</section>
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>No Education on Security Topics</h1>
+					<h2>Mistake no. 2</h2>
+				</section>
+
+				<section class="big-image" data-background="./images/yellow-school-bus.jpg">
+				</section>
+
+				<section>
+					<h2>SQLInjection</h2>
+					<pre><code class="language-java hljs" data-trim contenteditable style="max-height: 100%">
+Statement st = conn.createStatement();
+String query = 'SELECT * FROM writers WHERE name="' + writerName + '"';
+ResultSet res = st.executeQuery(query);
+					</code></pre>
+
+					<image class="fragment" src="images/searchbox.png" />
+
+					<p class="fragment">INJECTION: When entering "'; DROP TABLE writers; --" table will be dropped.</p>
+				</section>
+				<section>
+
+					<h2>SQLInjection - "The Fix"</h2>
+					<pre><code class="language-java hljs" data-trim contenteditable style="max-height: 100%">
+Statement st = conn.createStatement();
+String query = 'SELECT * FROM writers WHERE name="' + writerName + '"';
+ResultSet res = st.executeQuery(query.replaceAll("DROP TABLE ", ""));
+					</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>Not Checking for Common Vulnerabilites</h1>
+					<h2>Mistake no. 3</h2>
+				</section>
+
+				<section>
+					<img src="images/krack-attack.jpg" />
+
+					<aside class="notes">
+						Anyone heard of this one?<br>pause<br> This is the KRACK attack published in 2017. This one got pretty heavy media coverage in 2017.
+						But in 2017 20.000 vulnerabilites where disclosed.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Common OSS vulnerabilities (2017)</h2>
+					<ul>
+						<li>CVE-2016-9879 : Spring Security Framework</li>
+						<li>CVE-2017-7525 : Jackson Databind</li>
+						<li>WS-2017-0195 : jQuery</li>
+						<li>CVE-2017-5637 : Zookeeper Apache</li>
+						<li>CVE-2017-12617 : Apache Tomcat</li>
+					</ul>
+
+					<aside class="notes">
+						So altough bugs like Heartbleed, Shellshock and the DROWN attack made headlines that were too big to ignore, most bugs in dependencies
+						often go unnoticed.
+
+						<ul>
+							<li>Allowed attackers to bypass an important security constraints</li>
+							<li>Deserialization flaw which could allow an unauthenticated user to perform code execution.</li>
+							<li>In < version 2.2.4 lowercasing logic on attribute names could lead to infinite recursion and potentially denial of service</li>
+							<li>Possible Denial of Service attack.</li>
+							<li>Allowing potiential remote execution attack.</li>
+						</ul>
+
+						These are just some of the more common ones found in 2017. So by far not a complete list.
+
+					</aside>
+				</section>
+
+				<section>
+					<h2>Spring Boot - Rest Service</h2>
+					<pre><code class="language-java" data-trim contenteditable style="max-height: 100%">
+package nl.first8.presentations.spring.helloworld;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+@EnableAutoConfiguration
+public class HelloController {
+
+    @RequestMapping("/")
+    @ResponseBody
+    public String index() {
+        return "Hello world!";
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(HelloController.class, args);
+    }
+}
+					</code></pre>
+					<h3>A whopping 22 lines of code</h3>
+
+					<aside class="notes">
+						But what about the code you do not write yourself? As you can see this application has 22 lines of code written to be
+						functional and is working fine. It is a REST service that will respond with "Hello World" when called. Sorry but my examples
+						are based on Java because that is still my background.
+
+						<br><br>Who want to take a guess on the number of lines that the dependencies consist of?
+
+						<br><br>But what you can't see is that 875.000 lines of Java code (980.000 lines total) that are imported via third party libraries that you didn't write.
+						How secure are those?
+
+						<br><br>But I'm using open source...
+					</aside>
+				</section>
+
+				<section>
+					<table>
+						<th>
+							<td><b>Comment</b></td>
+							<td><b>Code</b></td>
+						</th>
+						<tr>
+							<td>Java</td>
+							<td style="text-align: right;">399.985</td>
+							<td style="text-align: right;">874.985</td>
+						</tr>
+						<tr>
+							<td>JSON</td>
+							<td style="text-align: right;">0</td>
+							<td style="text-align: right;">52.583</td>
+						</tr>
+						<tr>
+							<td>XML</td>
+							<td style="text-align: right;">1.083</td>
+							<td style="text-align: right;">16.994</td>
+						</tr>
+						<tr>
+							<td>Other</td>
+							<td style="text-align: right;">3.594</td>
+							<td style="text-align: right;">35.351</td>
+						</tr>
+						<tr>
+							<td>Total</td>
+							<td style="text-align: right;">404.662</td>
+							<td style="text-align: right;">979.913</td>
+						</tr>
+					</table>
+				</section>
+
+				<section>
+					<h1>Tools</h1>
+					<table>
+						<th>
+							<td><b>Open Source</b></td>
+							<td><b>Commercial</b></td>
+						</th>
+						<tr>
+							<td></td>
+							<td>Node Security Project</td>
+							<td>Hakiri</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>RetireJS</td>
+							<td>Snyk</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>OSSIndex</td>
+							<td>Gemnasium</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>Dependency-check</td>
+							<td>SRC:CLR</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>Bundler-audit</td>
+							<td></td>
+						</tr>
+					</table>
+
+					<aside class="notes">
+						The Node Security Project is known for its work on Node.js modules and NPM dependencies.
+						It also provides tools that scan for dependencies and find vulnerabilities using public vulnerability
+						databases as well as its own database, which it builds from the scans it does on NPM modules.
+
+						<br><br>RetireJS is an open-source, JavaScript-specific dependency checker. The project is primarily focused on ease of use.
+
+						<br><br>OSSIndex supports several technologies. It extracts dependency information from NPM, Nuget, Maven Central Repository, Bower,
+						hocolatey, and MSI (which means it's covering the JavaScript, .NET/C#, and Java ecosystems)
+
+						<br><br>Dependency-check is an open-source command line tool from OWASP that is very well maintained. It can be used in a stand-alone mode as well as in
+						build tools. Dependency-check supports Java, .NET, JavaScript, and Ruby.
+
+						<br><br>Bundler-audit is an open-source, command-line dependency checker focused on Ruby Bundler.
+						This project retrieves its vulnerability information from the NIST NVD and RubySec, which is a Ruby vulnerability database.
+
+						<br><br>Hakiri is a commercial tool that offers dependency checking for Ruby and Rails-based GitHub projects using static code analysis.
+					 	It offers free plans for public open-source projects and paid plans for private projects
+
+						<br><br>Snyk is a commercial service that focuses on JavaScript npm dependencies.
+
+						<br><br>Gemnasium is a commercial tool which supports Ruby, NPM (JavaScript), PHP, Python, and Bower (JavaScript)
+
+						<br><br>Source Clear is a commercial tool. It offers a ton of plugins to several IDEs, deployment systems, and source repositories, as well as a command-line interface.
+
+						<br><br>As you can see a lot of options to choose from...
+					</aside>
+				</section>
+
+				<section>
+					<h1>Example</h1>
+					<iframe src="https://asciinema.org/a/uaRi8eep5sUBmzKcFa2Csyqxu/embed?cols=200&rows=30&speed=2&size=medium"
+              style="width: 1328px; height: 706px;"></iframe>
+
+							<aside class="notes">
+								This is a manual run off the OWASP dependecy check on the Hello World rest application.
+								<br>As you can see it finds some errors and fails the build...
+							</aside>
+				</section>
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>Features before Security</h1>
+					<h2>Mistake no. 4</h2>
+				</section>
+
+				<section class="big-image" data-background="./images/priority-tag.jpg" data-background-size="contain">
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section class="big-image" data-background="./images/megaphone.jpg" data-background-size="contain">
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section class="big-image" data-background="./images/champion.jpg">
+					<aside class="notes">
+					</aside>
+				</section>
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>Security and CI/CD</h1>
+					<h2>Mistake no. 5</h2>
+				</section>
+
+				<section class="big-image" data-background="./images/fork-in-road.jpeg">
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section class="big-image" data-background="./images/speed-bumps-sign.png" data-background-size="770px 679px">
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section>
+					<h2>Functional Tests</h2>
+
+					<aside class="notes">
+						These are essentially the same as automated acceptance tests, but targeted at verifying that security features such as authentication and logout,
+						work as expected. They can mostly be automated using existing acceptance testing browser automation tools like Selenium/WebDriver.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Test agains known weaknesses</h2>
+
+					<aside class="notes">
+						Includes testing known weaknesses and mis-configurations such as lack of the HttpOnly flag on session cookies, or use of known weak SSL suites and ciphers.
+						These are particularly well suited for automation because the weaknesses are known up front (if not by the development team, then by the security team).
+						What’s more is that these tests lend themselves to a TDD approach in that they can serve as the security specification before building the application and environment.
+						Some work has already been done in extracting these types of tests into security test automation frameworks, see: BDD-Security (I’m the author), Mittn by F-Secure and Gauntlt.
+						Because these test non-functional aspects of the application, they need access to the HTTP layer which browser automation tools do not provide.
+						So testing these requires a hybrid approach: Browser automation together with a proxy server to inspect and inject requests.
+						My preferred combination here is WebDriver with OWASP ZAP.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Security scanning</h2>
+
+					<aside class="notes">
+						Even manually driven penetration tests usually kick off with an automated scan using vulnerability scanning tools like Nessus, Burp and OWASP ZAP.
+						It’s worthwhile understanding the difference between these tools and how they’re used. Nessus if primarily an infrastructure scanner in that it’ll
+						test an IP address and all exposed ports for known weaknesses. It also includes a “web” scanning component that will test HTTP services for similar
+						known weaknesses, but the scanning at the web tier is extremely superficial. For example, Nessus would not be able to scan any content or
+						functionality behind the login form, nor navigate through a web wizard. Burp Intruder (Commercial) and OWASP ZAP (Open Source) are focussed on the
+						web tier and are true application scanners in that they inspect and test at the HTTP layer by injecting attack data into parameters and evaluating
+						the application’s response. They can provide in-depth security scanning if they’re used correctly. But if they’re simply used to spider the application
+						and run an automated test then there’s a good chance that they won’t find or test all the available content.
+ 						To successfully automate application scanning, one should ensure that all of the content to be scanned is navigated and populated in the scanning tool,
+						before starting to spider and scan the application. If you already have acceptance tests that drive a browser, then these can be re-used to populate
+						the Burp or ZAP content before kicking off a scan.
+					</aside>
+				</section>
+
+				<section class="big-image" data-background="./images/disco-ball.png">
+					<aside class="notes">
+					</aside>
+				</section>
+			</section>
+
+			<section class="big-image" data-background="./images/conclusion.jpg" data-background-size="contain">
+				<aside class="notes">
+				</aside>
+			</section>
+
+			<section class="introduction">
+				<div>
+					<div class="text">
+						<h1>Thank you!</h1>
+						<p>You can find me at
+							<div class="twitter">@ragelderblom</div>
+							<div>a.gelderblom@first8.nl</div>
+						</p>
+					</div>
+					<div class="image">
+						<img src="./images/profile.jpg" />
+					</div>
+				</div>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="../../lib/js/head.min.js"></script>
+	<script src="../../js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+
+			width: "100%",
+			height: "100%",
+			margin: 0,
+			minScale: 1,
+			maxScale: 1,
+
+			// your allotted time for presentation
+			allottedTime: 40 * 60 * 1000, // 40 minutes
+			progressBarHeight: 5,
+			timeProgressBarStyle: 'speaker',
+
+			badges: {
+	      defaults: {
+	        bg: 'black',
+	        fg: 'white',
+	        position: 'tr'
+	      },
+	      languages: {
+					java: {
+						fg: "red",
+						bg: "white"
+					}
+				}
+    	},
+
+			chart: {
+				defaults: {
+					global: {
+						animation: null,
+						title: {
+							fontColor: "#000"
+						},
+						legend: {
+							labels: {
+								fontColor: "#000"
+							},
+						},
+					},
+					scale: {
+						scaleLabel: {
+							fontColor: "#000"
+						},
+						gridLines: {
+							color: "#FFF",
+							zeroLineColor: "#000"
+						},
+						ticks: {
+							fontColor: "#000"
+						},
+					}
+				},
+				line: {
+					borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"],
+					"borderDash": [
+						[5, 10],
+						[0, 0]
+					]
+				},
+				// bar: {
+					// backgroundColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"]
+				// },
+				pie: {
+					backgroundColor: [
+						["rgba(0,0,0,.8)", "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"]
+					]
+				},
+				radar: {
+					borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"]
+				},
+			},
+
+			dependencies: [{
+					src: '../../plugin/markdown/marked.js'
+				},
+				{
+					src: '../../plugin/markdown/markdown.js'
+				},
+				{
+					src: '../../plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: '../../plugin/highlight/highlight.js',
+					async: true,
+					callback: function() {
+						hljs.initHighlightingOnLoad();
+					}
+				},
+				{
+					src: '../../plugin/elapsed-time-bar/elapsed-time-bar.js'
+				},
+				{
+					src: '../../plugin/fullscreen/fullscreen.js'
+				},
+				{
+					src: '../../plugin/embed-tweet/embed-tweet.js'
+				},
+				{
+					src: '../../plugin/chartjs/Chart.min.js'
+				},
+				{
+					src: '../../plugin/chartjs/csv2chart.js'
+				},
+				{
+					src: '../../plugin/badges/badges.js'
+				}
+			]
+		});
+	</script>
+</body>
