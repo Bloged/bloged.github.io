@@ -303,11 +303,21 @@
 						</div>
 					</div>
 				</section>
-
+<!--
 				<section>
 					<div class="tweet" data-src="https://twitter.com/ProdSec/status/943122600112291840"></div>
 				</section>
+-->
+				<section class="quote">
+					<blockquote><b><i>Security is everyone’s job now</b></i>, not just the security team’s. With continuous integration and continuous deployment,
+						<b><i>all developers have to be security engineers</b></i> … we move too fast for there to be time for reviews by the security team beforehand.
+						That needs automation, and it needs to be integrated into your process. <b><i>Each and every piece should get security integrated into it</b></i> …
+						before and after being deployed.<div class="author">- Werner Vogels</div></blockquote>
 
+					<aside class="notes">
+						Werner Vogels (AWs CTO) Said at AWS re:Invent 2017
+					</aside>
+				</section>
 			</section>
 
 			<section>
@@ -325,7 +335,7 @@
   "datasets":[
    {
     "data":[1,5,10,50,150],
-    "label":"Cost of Software Bug","backgroundColor":"rgba(20,220,220,.8)"
+    "label":"Cost of Software Bug","backgroundColor":"rgba(0,0,0,.8)"
    }
   ]
  },
@@ -344,7 +354,7 @@
   "datasets":[
    {
     "data":[1,5,10,50,150,1000],
-    "label":"Cost of Software Bug","backgroundColor":"rgba(20,220,220,.8)"
+    "label":"Cost of Software Bug","backgroundColor":"rgba(0,0,0,.8)"
    }
   ]
  },
@@ -360,12 +370,11 @@
 				</section>
 
 				<section>
-					<h1>Threat modeling</h1>
+					<img src="images/threatmodel.png" />
 				</section>
 
-				<section>
-					<h1>Specify security acc crit.</h1>
-				</section>
+				<section class="big-image" data-background="images/checkmark-green.jpg" /></section>
+
 			</section>
 
 			<section>
@@ -373,10 +382,10 @@
 					<h1>No Education on Security Topics</h1>
 					<h2>Mistake no. 2</h2>
 				</section>
-
+<!--
 				<section class="big-image" data-background="./images/yellow-school-bus.jpg">
 				</section>
-
+-->
 				<section>
 					<h2>SQLInjection</h2>
 					<pre><code class="language-java hljs" data-trim contenteditable style="max-height: 100%">
@@ -471,16 +480,10 @@ public class HelloController {
 					<h3>A whopping 22 lines of code</h3>
 
 					<aside class="notes">
-						But what about the code you do not write yourself? As you can see this application has 22 lines of code written to be
-						functional and is working fine. It is a REST service that will respond with "Hello World" when called. Sorry but my examples
-						are based on Java because that is still my background.
-
-						<br><br>Who want to take a guess on the number of lines that the dependencies consist of?
-
-						<br><br>But what you can't see is that 875.000 lines of Java code (980.000 lines total) that are imported via third party libraries that you didn't write.
-						How secure are those?
-
-						<br><br>But I'm using open source...
+						<ul>
+							<li>REST service</li>
+							<li>Guess java lines</li>
+						</ul>
 					</aside>
 				</section>
 
@@ -516,6 +519,18 @@ public class HelloController {
 							<td style="text-align: right;">979.913</td>
 						</tr>
 					</table>
+
+					<aside class="notes">
+							But what you can't see is that 875.000 lines of Java code (980.000 lines total) that are imported via third party libraries that you didn't write.
+						How secure are those?
+
+						<br><br>But I'm using open source...
+						The misconception about open source being more secure started with what's known as Linus Law - named in honor of Linus
+						Torvalds and formulated by Eric S. Raymond in his essay and book The Cathedral and the Bazaar - and Linus' famous quote.
+
+						<br><br>Considering that a bug such as ShellShock (September 2014) existed in the OpenSSL library for more than 22 years, it is far
+						from relevant nowadays.
+					</aside>
 				</section>
 
 				<section>
@@ -623,6 +638,9 @@ public class HelloController {
 
 				<section class="big-image" data-background="./images/fork-in-road.jpeg">
 					<aside class="notes">
+						Two options:
+						<br>- No to almost no automation
+						<br>- Everything is put in there
 					</aside>
 				</section>
 
@@ -632,7 +650,8 @@ public class HelloController {
 				</section>
 
 				<section>
-					<h2>Functional Tests</h2>
+					<h1>Functional Tests</h1>
+					<h2>Automated Acceptance Tests</h2>
 
 					<aside class="notes">
 						These are essentially the same as automated acceptance tests, but targeted at verifying that security features such as authentication and logout,
@@ -641,7 +660,8 @@ public class HelloController {
 				</section>
 
 				<section>
-					<h2>Test agains known weaknesses</h2>
+					<h1>Test agains known weaknesses</h1>
+					<h2>Configuration and Infrastructure</h2>
 
 					<aside class="notes">
 						Includes testing known weaknesses and mis-configurations such as lack of the HttpOnly flag on session cookies, or use of known weak SSL suites and ciphers.
@@ -655,7 +675,8 @@ public class HelloController {
 				</section>
 
 				<section>
-					<h2>Security scanning</h2>
+					<h1>Security scanning</h1>
+					<h2>Automated "Hacking" Tools</h2>
 
 					<aside class="notes">
 						Even manually driven penetration tests usually kick off with an automated scan using vulnerability scanning tools like Nessus, Burp and OWASP ZAP.
@@ -669,6 +690,11 @@ public class HelloController {
  						To successfully automate application scanning, one should ensure that all of the content to be scanned is navigated and populated in the scanning tool,
 						before starting to spider and scan the application. If you already have acceptance tests that drive a browser, then these can be re-used to populate
 						the Burp or ZAP content before kicking off a scan.
+					</aside>
+				</section>
+
+				<section class="big-image" data-background="./images/SANS.jpg" data-background-size="contain">
+					<aside class="notes">
 					</aside>
 				</section>
 
