@@ -1853,6 +1853,12 @@
 					continue;
 				}
 
+				var slideStyle = slide.getAttribute( 'data-slide-style' );
+				var slideStylePadding = slide.getAttribute( 'data-slide-style-padding' );
+				if (slideStylePadding === null) {
+					slideStylePadding = '0';
+				}
+
 				if( config.center || slide.classList.contains( 'center' ) ) {
 					// Vertical stacks are not centred since their section
 					// children will be
@@ -1860,7 +1866,14 @@
 						slide.style.top = 0;
 					}
 					else {
-						slide.style.top = Math.max( ( size.height - slide.scrollHeight ) / 2, 0 ) + 'px';
+						if (slideStyle === 'bottom') {
+							slide.style.bottom = slideStylePadding+'px';
+						} else if (slideStyle === 'top') {
+							slide.style.top = slideStylePadding+'px';
+						} else {
+							slide.style.top = Math.max( ( size.height - slide.scrollHeight ) / 2, 0 ) + 'px';
+						}
+
 					}
 				}
 				else {
