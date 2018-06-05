@@ -1,0 +1,611 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title></title>
+	<link rel="stylesheet" href="../../css/reveal.css">
+	<link rel="stylesheet" href="../../css/theme/slidedeck.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../lib/css/zenburn.css">
+
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+      <section class="title" data-background="#318BB6">
+					<h1>Help! Security</h1>
+      </section>
+
+			<section>
+				<section class="about-you" data-background="#318BB6">
+					<h1>Who are you?</h1>
+					<div class="columns">
+						<div class="column"><img src="../_images/icon_dev.png"></div>
+						<div class="column"><img src="../_images/icon_tester.png"></div>
+						<div class="column"><img src="../_images/icon_ops.png"></div>
+						<div class="column"><img src="../_images/icon_security.png"></div>
+						<div class="column"><img src="../_images/icon_other.png"></div>
+					</div>
+				</section>
+
+				<section class="introduction">
+					<div>
+						<div class="text">
+							<h1>Hello!</h1>
+							<h2>I am Arjan Gelderblom</h2>
+							<h3>Security Software Engineer</h3>
+							<p>You can find me at @ragelderblom</p>
+						</div>
+						<div class="image">
+							<img src="../_images/profile.jpg" />
+						</div>
+					</div>
+				</section>
+
+
+				<section class="big-image" data-background="../_images/first8-lego.jpg" data-background-opacity="0.95">
+				</section>
+
+				<section class="big-image" data-background="../_images/joa.jpg" data-background-opacity="0.95">
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h1>Risk</h1>
+					<p>A <strong>threat agent</strong> interacts with a <strong>system</strong>, which may have a
+						<strong>vulnerability</strong> that can be <strong>exploited</strong> in order to cause an
+						<strong>impact</strong>.
+
+						<aside class="notes">
+							think of it this way: a car burglar (threat agent) goes through a parking lot checking cars (the
+							system) for unlocked doors (the vulnerability) and when they find one, they open the door (the exploit)
+							and take whatever is inside (the impact).
+						</aside>
+				</section>
+
+				<section class="transition">
+					<h1>Example Exploit</h1>
+					<h2>Demo Time</h2>
+				</section>
+
+				<section>
+            <h1>Reconnaissance</h1>
+            <div class="stretch">
+                <iframe src="https://asciinema.org/a/LEPMwQWNbvksv13TTXzZuM0V2/embed?cols=200&rows=30&speed=5&size=medium"
+                        style="width: 100%; height:100%;"></iframe>
+            </div>
+				</section>
+
+        <section>
+            <h1>WPScan</h1>
+            <div class="stretch">
+            <iframe src="https://asciinema.org/a/PhNbyPGtEFUstQRgjKdJz70c5/embed?cols=200&rows=30&speed=5&size=medium"
+                    style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </section>
+
+        <section>
+            <h1>Bob's password</h1>
+            <div class="stretch">
+            <iframe src="https://asciinema.org/a/SENtSyMGHoyPXdIWPaNWmHZRc/embed?cols=200&rows=30&speed=50&size=medium"
+                    style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </section>
+
+				<section>
+            <h1>Attempt 1</h1>
+            <img src="images/reverse-shell.png"/>
+        </section>
+
+				<section>
+            <h1>Attempt 2</h1>
+            <img src="images/reverse-proxy.png"/>
+        </section>
+
+				<section>
+            <h1>Reconnaissance</h1>
+            <div class="stretch">
+            <iframe src="https://asciinema.org/a/H4p6JOnezIh5LFFZxUhWXDA42/embed?cols=200&rows=30&speed=65&size=medium"
+                    style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </section>
+
+				<section>
+            <h1>Docker-SSH</h1>
+            <div class="stretch">
+            <iframe src="https://asciinema.org/a/LQ8fNqUiyzBIiQLXVAgdGbfhb/embed?cols=200&rows=30&speed=5&size=medium"
+                    style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </section>
+
+				<section>
+            <h1>Breakout to host</h1>
+            <div class="stretch">
+            <iframe src="https://asciinema.org/a/rhZ9vuhfNEuc1Zhx1u42oeJ1k/embed?cols=200&rows=30&speed=75&size=medium"
+                    style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </section>
+
+				<section>
+            <h1>Breakout to host</h1>
+            <div class="stretch">
+            <iframe src="https://asciinema.org/a/rhZ9vuhfNEuc1Zhx1u42oeJ1k/embed?cols=200&rows=30&speed=1&size=medium&t=293:30"
+                    style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </section>
+
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>Architect</h1>
+					<p>The one who takes the blame for the quality.</p>
+				</section>
+
+				<section class="big-image" data-background="images/crash-01.jpg" >
+				</section>
+
+				<section class="big-image" data-background="images/upside-down.jpg" >
+				</section>
+
+				<section class="big-image" data-background="images/threadmodel.png" data-background-size="contain">
+				</section>
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>Developer</h1>
+					<p>Understand the problem that the software is supposed to solve.</p>
+				</section>
+
+				<section class="big-image" data-background="images/crash-02.jpg" >
+				</section>
+
+				<section>
+					<h1>Secure Coding</h1>
+					<p>The goal of <strong>software security</strong> is to maintain the <strong>confidentiality</strong>,
+						<strong>integrity</strong>, and <strong>availability</strong> of information resources in order to
+						enable successful business operations. This goal is accomplished through the implementation of
+						<strong>security controls</strong>.</p>
+				</section>
+
+				<section>
+					<h1>Secure or not?</h1>
+					<pre><code class="language-java hljs" data-trim contenteditable style="max-height: 100%">
+public static int stringCompare(String orig, String input) {
+    char[] charArray1 = orig.toCharArray();
+    char[] charArray2 = input.toCharArray();
+
+    int length = charArray2.length;
+
+    int k = 0;
+    while (k < length) {
+        if (charArray1[k] != charArray2[k]) {
+            return charArray1[k] - charArray2[k];
+        }
+        k++;
+    }
+    return 0;
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Secure Coding Practices</h1>
+					<ol>
+						<li>Validate input</li>
+						<li>Heed compiler warnings</li>
+						<li>Design for security policies</li>
+						<li>Keep it simple</li>
+						<li>Default deny</li>
+						<li>Principle of least privilege</li>
+						<li>Sanitize data</li>
+						<li>Practice defense in depth</li>
+						<li>Quality assurance</li>
+						<li>Secure coding</li>
+					</ol>
+				</section>
+				<section>
+					<h1>OWASP Top 10</h1>
+					<ol>
+						<li><strong>A1:2017</strong> - Injection</li>
+						<li><strong>A2:2017</strong> - Broken Authentication</li>
+						<li><strong>A3:2017</strong> - Sensitive Data Exposure</li>
+						<li><strong>A4:2017</strong> - XML External Entities (XXE)</li>
+						<li><strong>A5:2017</strong> - Broken Access Controls</li>
+						<li><strong>A6:2017</strong> - Security Misconfiguration</li>
+						<li><strong>A7:2017</strong> - Cross-Site Scripting (XSS)</li>
+						<li><strong>A8:2017</strong> - Insecure Deserialization</li>
+						<li><strong>A9:2017</strong> - Using Components with Known Vulnerabilities</li>
+						<li><strong>A10:2017</strong> - Insufficient Logging & Monitoring</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Spring Boot - Rest Service</h2>
+					<pre><code class="hljs" data-trim contenteditable style="max-height: 100%">
+package nl.first8.presentations.spring.helloworld;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+@EnableAutoConfiguration
+public class HelloController {
+
+    @RequestMapping("/")
+    @ResponseBody
+    public String index() {
+        return "Hello world!";
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(HelloController.class, args);
+    }
+}
+					</code></pre>
+					<h3>A whopping 22 lines of code</h3>
+
+					<aside class="notes">
+						But what about the code you do not write yourself? As you can see this application has 22 lines of code written to be
+						functional and is working fine. It is a REST service that will respond with "Hello World" when called. Sorry but my examples
+						are based on Java because that is still my background.
+
+						<br><br>Who want to take a guess on the number of lines that the dependencies consist of?
+
+						<br><br>But what you can't see is that 875.000 lines of Java code (980.000 lines total) that are imported via third party libraries that you didn't write.
+						How secure are those?
+
+						<br><br>But I'm using open source...
+					</aside>
+				</section>
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>Tester</h1>
+					<p>Knows his end users.</p>
+				</section>
+
+				<section class="big-image" data-background="images/crash-03.jpg" >
+				</section>
+
+				<section>
+					<h1>Functional Tests</h1>
+					<p>Automated acceptance tests</p>
+				</section>
+
+				<section>
+					<pre><code class="hljs" data-trim contenteditable style="max-height: 100%">
+Scenario: Visitors are able to login
+
+Given the visitor is on the home screen
+Given the visitor is NOT logged in
+When the visitor clicks the login button
+Then login screen is loaded
+When the visitor types his email
+When the visitor types his password
+When the visitor clicks the login button
+Then profile screen is loaded
+					</code></pre>
+
+					<pre class="fragment"><code class="hljs" data-trim contenteditable style="max-height: 100%">
+Scenario: Visitors are able to login
+
+Given the visitor is on the home screen
+Given the visitor is NOT logged in
+When the visitor clicks the login button
+Then login screen is loaded
+When the visitor types his email
+When the visitor types random string
+When the visitor clicks the login button
+Then profile screen is not loaded
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Security Scanning</h1>
+					<p>Automated "Security" Scanning</p>
+				</section>
+
+				<section>
+					<h1>OWASP ZED Attack Proxy</h1>
+          <div class="stretch">
+            	<iframe src="https://asciinema.org/a/1s2telu6m7vsd4uzxoursd8pt/embed?cols=200&rows=30&speed=7&size=medium"
+                    	style="width: 100%; height:100%;"></iframe>
+      		</div>
+				</section>
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>Operations</h1>
+					<p>Responsible for the availability, scalability, performance and delivery.</p>
+				</section>
+
+				<section class="big-image" data-background="images/crash-04.jpg" >
+				</section>
+
+				<section>
+					<h1>Test for Weaknesses</h1>
+					<p>Configuration and Infrastructure</p>
+				</section>
+
+				<section>
+					<h1>Gauntlt</h1>
+					<pre><code class="language-bash hljs" data-trim contenteditable style="max-height: 100%">
+@slow
+Feature: simple nmap attack (sanity check)
+
+  Background:
+    Given "nmap" is installed
+    And the following profile:
+      | name     | value      |
+      | hostname | 172.17.0.2 |
+
+  Scenario: Verify server is available on standard web ports
+    When I launch an "nmap" attack with:
+      """
+      nmap -p 8080,443 {hostname}
+      """
+    Then the output should match /8080.tcp\s+open/
+    And the output should not match:
+      """
+      443/tcp\s+open
+"""
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Gauntlt</h1>
+          <div class="stretch">
+            	<iframe src="https://asciinema.org/a/2tfc8bfzygw6j6xvjgn2pvnia/embed?cols=200&rows=30&speed=1&size=medium"
+                    	style="width: 100%; height:100%;"></iframe>
+      		</div>
+				</section>
+
+				<section>
+					<h1>INSPEC</h1>
+					<pre><code class="language-bash hljs" data-trim contenteditable style="max-height: 100%">
+title '/port-8080 open'
+
+# you add controls here
+control "port 8080" do                      # A unique ID for this control
+  impact 0.7                                # The criticality, if this control fails.
+  title "Port 8080 should be listening"     # A human-readable title
+  desc "Checking the port public port ..."   # Describe why this is needed
+  tag data: "port"                          # A tag allows you to associate key
+  tag "security"                            # information to the test
+  ref "Document A-12", url: 'http://...'    # Additional references
+
+  describe port(8080) do                      # Actual test
+    it { should be_listening }
+  end
+end
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>INSPEC</h1>
+          <div class="stretch">
+            	<iframe src="https://asciinema.org/a/4ft5iso3jhu8vbh6shnatr1nk/embed?cols=200&rows=30&speed=1&size=medium"
+                    	style="width: 100%; height:100%;"></iframe>
+      		</div>
+				</section>
+
+				<section class="quote">
+					<blockquote>You can't improve what you don't measure.<br><br>
+					And you shouldn't measure what you don't manage.</blockquote>
+				</section>
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>Product Owner</h1>
+					<p>Represents the customer, interfaces and engages the customer.</p>
+				</section>
+
+				<section class="big-image" data-background="images/crash-05.jpg" >
+				</section>
+
+				<section class="big-image" data-background="./images/priority-tag.jpg" data-background-size="contain">
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section class="big-image" data-background="./images/yellow-school-bus.jpg">
+					<aside class="notes">
+					</aside>
+				</section>
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>Security</h1>
+					<p>Break all the things.</p>
+				</section>
+
+				<section class="big-image" data-background="images/crash-06.jpg" >
+				</section>
+
+				<section class="big-image" data-background="images/tetris.gif" >
+				</section>
+
+				<section class="big-image" data-background="images/johnny.jpg" >
+				</section>
+			</section>
+
+			<section>
+				<section class="transition">
+					<h1>DevSecOps</h1>
+					<h2>Mindset</h2>
+					<p>Everyone is responsible for security!</p>
+				</section>
+
+				<section class="big-image" data-background="images/tug-of-war.jpeg" >
+				</section>
+
+				<section class="quote">
+					<blockquote><b><i>Security is everyone’s job now</b></i>, not just the security team’s. With continuous integration and continuous deployment,
+						<b><i>all developers have to be security engineers</b></i> … we move too fast for there to be time for reviews by the security team beforehand.
+						That needs automation, and it needs to be integrated into your process. <b><i>Each and every piece should get security integrated into it</b></i> …
+						before and after being deployed.<div class="author">- Werner Vogels</div></blockquote>
+
+					<aside class="notes">
+						Werner Vogels (AWs CTO) Said at AWS re:Invent 2017
+					</aside>
+				</section>
+			</section>
+
+			<section class="thanks">
+				<h1>Thanks!</h1>
+				<h2>Any questions?</h2>
+				<p>You can find me at:</p>
+				<ul>
+					<li>a.gelderblom@first8.nl</li>
+					<li>@ragelderblom</li>
+				</ul>
+			</section>
+    </div>
+	</div>
+
+	<script src="../../lib/js/head.min.js"></script>
+	<script src="../../js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+
+			width: "1800",
+			height: "1080",
+			margin: 0,
+			minScale: 1,
+			maxScale: 1,
+
+			// your allotted time for presentation
+			allottedTime: 40 * 60 * 1000, // 40 minutes
+			progressBarHeight: 5,
+			timeProgressBarStyle: 'speaker',
+
+			badges: {
+	      defaults: {
+	        bg: 'black',
+	        fg: 'white',
+	        position: 'tr'
+	      },
+	      languages: {
+					java: {
+						fg: "red",
+						bg: "white"
+					}
+				}
+    	},
+
+			chart: {
+				defaults: {
+					global: {
+						animation: null,
+						title: {
+							fontColor: "#000"
+						},
+						legend: {
+							labels: {
+								fontColor: "#000"
+							},
+						},
+					},
+					scale: {
+						scaleLabel: {
+							fontColor: "#000"
+						},
+						gridLines: {
+							color: "#FFF",
+							zeroLineColor: "#000"
+						},
+						ticks: {
+							fontColor: "#000"
+						},
+					}
+				},
+				line: {
+					borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"],
+					"borderDash": [
+						[5, 10],
+						[0, 0]
+					]
+				},
+				// bar: {
+					// backgroundColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"]
+				// },
+				pie: {
+					backgroundColor: [
+						["rgba(0,0,0,.8)", "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"]
+					]
+				},
+				radar: {
+					borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"]
+				},
+			},
+
+			dependencies: [{
+					src: '../../plugin/markdown/marked.js'
+				},
+				{
+					src: '../../plugin/markdown/markdown.js'
+				},
+				{
+					src: '../../plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: '../../plugin/highlight/highlight.js',
+					async: true,
+					callback: function() {
+						hljs.initHighlightingOnLoad();
+					}
+				},
+				{
+					src: '../../plugin/elapsed-time-bar/elapsed-time-bar.js'
+				},
+				{
+					src: '../../plugin/fullscreen/fullscreen.js'
+				},
+				{
+					src: '../../plugin/embed-tweet/embed-tweet.js'
+				},
+				{
+					src: '../../plugin/chartjs/Chart.min.js'
+				},
+				{
+					src: '../../plugin/chartjs/csv2chart.js'
+				},
+				{
+					src: '../../plugin/badges/badges.js'
+				}
+			]
+		});
+	</script>
+</body>
