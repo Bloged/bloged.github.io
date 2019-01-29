@@ -355,15 +355,13 @@ body {
   display: flex;
   flex-flow: row wrap;
   top: 0px;
-  margin-left: 10%;
-  background-color: lightblue; }
+  margin-left: 10%; }
 
 .reveal section.small-image div div.text {
   display: block;
   flex: 1; }
 
 .small-image .image {
-  background: url("../../slidedeck/skyline.jpeg");
   background-position: center bottom;
   width: 600px;
   height: 100%;
