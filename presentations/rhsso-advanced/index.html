@@ -1,0 +1,537 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title></title>
+    <link rel="stylesheet" href="../../css/reveal.css">
+    <link rel="stylesheet" href="../../css/theme/slidedeck.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../../lib/css/zenburn.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic'
+          rel='stylesheet' type='text/css'>
+
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <script src="https://cdn.logwork.com/widget/countdown.js"></script>
+</head>
+
+<body>
+<div class="reveal">
+    <div class="slides">
+
+        <section class="title" data-background="#318BB6">
+            <h1>Red Hat Single Sign-On</h1>
+            <h1>Advanced Workshop</h1>
+        </section>
+
+        <section class="small-image">
+            <div>
+                <div class="text">
+                    <h1>Please Mute!</h1>
+                    <p>When not talking...</p>
+                </div>
+            </div>
+            <div style="width: 100%; align-content: center">
+                <img src="images/please-mute.png"/>
+            </div>
+        </section>
+
+        <section>
+            <h1>Agenda</h1>
+            <ul>
+                <li>13:45 - Walk-In</li>
+                <li>14:00 - Introductions</li>
+                <li>14:30 - Assignments - Block 1</li>
+                <li>15:10 - Wrap Up - Block 1</li>
+                <li>15:15 - Break</li>
+                <li>15:30 - Assignments - Block 2</li>
+                <li>16:10 - Wrap Up - Block 2</li>
+                <li>16:15 - Break</li>
+                <li>16:30 - Assignments - Block 3</li>
+                <li>17:10 - Wrap Up - Block 3</li>
+                <li>17:15 - End of Workshop</li>
+            </ul>
+        </section>
+
+        <section>
+            <section class="introduction">
+                <div>
+                    <div class="text">
+                        <h1>Hello!</h1>
+                        <h2>I am Arjan Gelderblom</h2>
+                        <h3>Security Software Engineer</h3>
+                        <p>You can find me at @ragelderblom</p>
+                    </div>
+                    <div class="image">
+                        <img src="../_images/profile.jpg"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="big-image" data-background="../_images/joa.jpg" data-background-opacity="0.95">
+            </section>
+
+            <section class="big-image" data-background="../_images/first8-lego.jpg" data-background-opacity="0.95">
+            </section>
+        </section>
+
+        <section>
+            <section class="transition">
+                <h1>Assignment Block 1</h1>
+                <p>Assignment 1: LDAP</p>
+                <p>Assignment 2: Authentication Flow</p>
+            </section>
+            <section>
+                <a href="https://logwork.com/countdown-picf" class="countdown-timer" data-style="columns"
+                   data-timezone="Europe/Amsterdam" data-textcolor="#ffffff" data-date="2021-06-15 15:10">My
+                    Countdown</a>
+            </section>
+
+            <section class="transition">
+                <h1>User Storage Federation</h1>
+                <h2>LDAP</h2>
+            </section>
+
+            <section class="quote">
+                <blockquote><b>Password Hashing</b><br/><br/>
+                    When the password of user is updated from Keycloak and sent to LDAP, it is always sent in
+                    plain-text. This is different from updating the password to built-in Keycloak database, when the
+                    hashing and salting is applied to the password before it is sent to DB. In the case of LDAP, the
+                    Keycloak relies on the LDAP server to provide hashing and salting of passwords.
+                    <div class="author">Keycloak Documentation</div>
+                </blockquote>
+            </section>
+
+            <section class="transition">
+                <h1>Authentication Flow</h1>
+            </section>
+
+            <section>
+                <h1>Execution requirements</h1>
+                <div class="columns">
+                    <div class="column">
+                        <b>Required</b>
+                        <p>All required elements in the flow must evaluate as successful.</p>
+                    </div>
+                    <div class="column">
+                        <b>Alternative</b>
+                        <p>Only a single element must evaluate as successful for the flow to evaluate as successful.</p>
+                    </div>
+                    <div class="column">
+                        <b>Disabled</b>
+                        <p>Any Disabled element is not evaluated and does not count to mark a flow as successful.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="small-image">
+                <aside class="notes">
+                    The first authentication type is Cookie. When a user successfully logs in for the first time, a
+                    session cookie is set. If this cookie has already been set, then this authentication type is
+                    successful. In this case, since the cookie provider returned success and each execution at this
+                    level of the flow is alternative, no other execution is executed and this results in a successful
+                    login.
+
+                    The second execution of the flow looks at the Kerberos execution. This authenticator is disabled by
+                    default and will be skipped.
+
+                    The third execution is the Identity Provider Redirector. It can be configured through the Actions >
+                    Config link to automatically redirect to another IdP for identity brokering.
+
+                    The next execution is a sub-flow called Forms. Since this sub-flow is marked as alternative it will
+                    not be executed if the Cookie authentication type passed. This sub-flow contains additional
+                    authentication type that needs to be executed. The executions for this sub-flow are loaded and the
+                    same processing logic occurs.
+
+                    The first execution in the Forms sub-flow is the Username Password Form. This authentication type
+                    renders the username and password page. It is marked as required so the user must enter in a valid
+                    username and password.
+
+                    The second execution in the Forms sub-flow is a new sub-flow: the Browser - Conditional OTP
+                    sub-flow. Since this sub-flow is conditional, whether it is executed depends on the result of the
+                    evaluation of the Condition - User Configured execution. If it is, the executions for this sub-flow
+                    are loaded and the same processing logic occurs
+
+                    The next execution is the Condition - User Configured. This checks if the other executions in the
+                    flow are configured for the user. Meaning that the Browser - Conditional OTP sub-flow will only be
+                    executed if the user has an OTP credential configured.
+
+                    The final execution is the OTP Form. This is marked as required, but because of the setup in the
+                    conditional subflow, it will only be run if the user has an OTP credential set up. If he doesn’t,
+                    the user will not see an OTP form.
+                </aside>
+                <img src="images/keycloak-auth-flow-default.png"/>
+            </section>
+        </section>
+
+        <section>
+            <section class="transition">
+                <h1>Assignment Block 2</h1>
+                <p>Assignment 3: Event Service</p>
+            </section>
+
+            <section>
+                <a href="https://logwork.com/countdown-picf" class="countdown-timer" data-style="columns"
+                   data-timezone="Europe/Amsterdam" data-textcolor="#ffffff" data-date="2021-06-15 16:10">My
+                    Countdown</a>
+            </section>
+
+            <section class="transition">
+                <h1>Event Listener</h1>
+            </section>
+
+            <section>
+                <h2>Event Types</h2>
+                <pre><code class="hljs" data-trim contenteditable style="max-height: 100%">
+    LOGIN(true),
+    LOGIN_ERROR(true),
+    REGISTER(true),
+    REGISTER_ERROR(true),
+    LOGOUT(true),
+    LOGOUT_ERROR(true),
+
+    CODE_TO_TOKEN(true),
+    CODE_TO_TOKEN_ERROR(true),
+
+    CLIENT_LOGIN(true),
+    CLIENT_LOGIN_ERROR(true),
+
+    REFRESH_TOKEN(false),
+    REFRESH_TOKEN_ERROR(false),
+    ...
+    FEDERATED_IDENTITY_LINK(true),
+    FEDERATED_IDENTITY_LINK_ERROR(true),
+    REMOVE_FEDERATED_IDENTITY(true),
+    REMOVE_FEDERATED_IDENTITY_ERROR(true),
+
+    UPDATE_EMAIL(true),
+    UPDATE_EMAIL_ERROR(true),
+    ...
+    VERIFY_EMAIL(true),
+    VERIFY_EMAIL_ERROR(true),
+					</code></pre>
+                <p>About 100 EventTypes in org.keycloak.events.EventType</p>
+            </section>
+
+            <section class="small-image">
+                <div>
+                    <div class="text">
+                        <h1>It's a kind of magic?!</h1>
+                    </div>
+                </div>
+                <img src="images/idea-rest-metrics-project.png"/>
+            </section>
+        </section>
+
+        <section>
+            <section class="transition">
+                <h1>Assignment Block 3</h1>
+                <p>Assignment 4: Rest Service</p>
+            </section>
+
+            <section>
+                <a href="https://logwork.com/countdown-picf" class="countdown-timer" data-style="columns"
+                   data-timezone="Europe/Amsterdam" data-textcolor="#ffffff" data-date="2021-06-15 17:10">My
+                    Countdown</a>
+            </section>
+
+            <section class="transition">
+                <h1>REST endpoints</h1>
+            </section>
+        </section>
+
+        <section>
+            <h1>More SPI</h1>
+            <ul>
+                <li>Keycloak Source: https://github.com/keycloak/keycloak</li>
+                <li>Quickstarts: https://github.com/keycloak/keycloak-quickstarts</li>
+            </ul>
+            <p>Most source code is adaptions of above examples.</p>
+        </section>
+
+        <section class="thanks">
+            <h1>Thanks!</h1>
+            <h2>Any questions?</h2>
+        </section>
+
+        <!--
+        <section class="transition">
+            <h1>Title of a very long length supercadefractu</h1>
+            <h2>Transition Headline</h2>
+            <p>Let's start with the first set of slides</p>
+        </section>
+
+        <section class="quote">
+            <blockquote>Quotations are commonly printed as a means of inspiration and to invoke philosophical thoughts
+                from the reader
+                <div class="author">Inspiring Author</div>
+            </blockquote>
+        </section>
+
+        <section>
+            <h1>This is a slide title</h1>
+            <ul>
+                <li>Here you have a list of items</li>
+                <li>And some text</li>
+                <li>But remember not to overload your slides with text</li>
+            </ul>
+            <p>Your audience will listen to you or read the content, but won't do both.</p>
+        </section>
+
+        <section data-slide-style="bottom" data-slide-style-padding='200' class="big-concept">
+            <h1>Big Concept</h1>
+            <p>Bring the attention of your audience over a key concept using icons or illustrations.</p>
+        </section>
+
+        <section>
+            <h1>You can also split your content</h1>
+            <div class="columns">
+                <div class="column">
+                    <h4>White</h4>
+                    <p>Is the color of milk and fresh snow, the color produced by the combination of all the colors of
+                        the visible spectrum.</p>
+                </div>
+                <div class="column">
+                    <h4>Black</h4>
+                    <p>Is the color of coal, ebony, and of outer space. It is the darkest color, the result of the
+                        absence of or complete absorption of light.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>In two or three columns</h1>
+            <div class="columns">
+                <div class="column">
+                    <b>Yellow</b>
+                    <p>Is the color of gold, butter and ripe lemons. In the spectrum of visible light, yellow is found
+                        between green and orange.</p>
+                </div>
+                <div class="column">
+                    <b>Blue</b>
+                    <p>Is the colour of the clear sky and the deep sea. It is located between violet and green on the
+                        optical spectrum.</p>
+                </div>
+                <div class="column">
+                    <b>Red</b>
+                    <p>Is the color of blood, and because of this it has historically been associated with sacrifice,
+                        danger and courage.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="small-image">
+            <div>
+                <div class="text">
+                    <h1>A picture is worth a thousand words</h1>
+                    <p>A complex idea can be conveyed with just a single still image, namely making it possible to
+                        absorb large amounts of data quickly.</p>
+                </div>
+                <div class="image" background-image="../_images/skyline.jpeg"/>
+            </div>
+        </section>
+
+        <section class="big-image" data-background="../_images/landscape.jpg" data-background-opacity="0.85"
+                 data-slide-style="bottom" data-slide-style-padding='100'>
+            <p>Want impact?</p>
+            <h1>Use big image</h1>
+        </section>
+
+        <section class="charts">
+            <h1>Use charts to explain your ideas</h1>
+            <div>
+                <div class="circle">
+                    <p>White</p>
+                </div>
+                <div class="circle">
+                    <p>Grey</p>
+                </div>
+                <div class="circle">
+                    <p>Black</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>And tables to compare data</h1>
+            <table>
+                <th>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                </th>
+                <tr>
+                    <td>Yellow</td>
+                    <td>10</td>
+                    <td>20</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>Blue</td>
+                    <td>30</td>
+                    <td>15</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Orange</td>
+                    <td>5</td>
+                    <td>24</td>
+                    <td>16</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="world-map" data-background="../_images/world-map.png" data-background-color="#318BB6"
+                 data-background-size="contain">
+        </section>
+
+        <section class="big-number" data-slide-style="bottom" data-slide-style-padding='400'>
+            <h1>89,526,124</h1>
+            <p>Whoa! That’s a big number, aren’t you proud?</p>
+        </section>
+
+        <section class="thanks">
+            <h1>Thanks!</h1>
+            <h2>Any questions?</h2>
+            <p>You can find me at:</p>
+            <ul>
+                <li>a.gelderblom@first8.nl</li>
+                <li>@ragelderblom</li>
+            </ul>
+        </section>
+        -->
+    </div>
+</div>
+
+<script src="../../lib/js/head.min.js"></script>
+<script src="../../js/reveal.js"></script>
+
+<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+
+        width: "1800",
+        height: "1200",
+        margin: 0,
+        minScale: 1,
+        maxScale: 1,
+
+        // your allotted time for presentation
+        allottedTime: 40 * 60 * 1000, // 40 minutes
+        progressBarHeight: 5,
+        timeProgressBarStyle: 'speaker',
+
+        badges: {
+            defaults: {
+                bg: 'black',
+                fg: 'white',
+                position: 'tr'
+            },
+            languages: {
+                java: {
+                    fg: "red",
+                    bg: "white"
+                }
+            }
+        },
+
+        chart: {
+            defaults: {
+                global: {
+                    animation: null,
+                    title: {
+                        fontColor: "#000"
+                    },
+                    legend: {
+                        labels: {
+                            fontColor: "#000"
+                        },
+                    },
+                },
+                scale: {
+                    scaleLabel: {
+                        fontColor: "#000"
+                    },
+                    gridLines: {
+                        color: "#FFF",
+                        zeroLineColor: "#000"
+                    },
+                    ticks: {
+                        fontColor: "#000"
+                    },
+                }
+            },
+            line: {
+                borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"],
+                "borderDash": [
+                    [5, 10],
+                    [0, 0]
+                ]
+            },
+            // bar: {
+            // backgroundColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"]
+            // },
+            pie: {
+                backgroundColor: [
+                    ["rgba(0,0,0,.8)", "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"]
+                ]
+            },
+            radar: {
+                borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"]
+            },
+        },
+
+        dependencies: [{
+            src: '../../plugin/markdown/marked.js'
+        },
+            {
+                src: '../../plugin/markdown/markdown.js'
+            },
+            {
+                src: '../../plugin/notes/notes.js',
+                async: true
+            },
+            {
+                src: '../../plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+            {
+                src: '../../plugin/elapsed-time-bar/elapsed-time-bar.js'
+            },
+            {
+                src: '../../plugin/fullscreen/fullscreen.js'
+            },
+            {
+                src: '../../plugin/embed-tweet/embed-tweet.js'
+            },
+            {
+                src: '../../plugin/chartjs/Chart.min.js'
+            },
+            {
+                src: '../../plugin/chartjs/csv2chart.js'
+            },
+            {
+                src: '../../plugin/badges/badges.js'
+            }
+        ]
+    });
+</script>
+</body>
